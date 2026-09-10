@@ -1,6 +1,6 @@
 # Vivo 健康音乐白名单注入（LSPosed / libxposed API 102）
 
-让 vivo 健康 App 在连接类原生 Android 手机时，能识别并控制**任意**音乐 App。
+让 vivo 健康 App 在连接 Android 手机时，能识别并控制任意音乐 App。
 
 ## 界面（Jetpack Compose + Material Design 3）
 
@@ -35,14 +35,6 @@ release 使用 debug 签名（`signingConfig = signingConfigs["debug"]`），方
 2. 强制停止并重新打开 **vivo 健康**，让模块注入。
 3. 打开本模块 App：在搜索框输入应用名（如「网易云音乐」）或包名，勾选目标音乐 App。勾选结果会实时同步。
 4. 回到手机播放音乐，手表音乐卡片即可显示并控制。
-
-查看日志：LSPosed 管理器 → 日志，筛选 tag `VivoHealthMusicFix`。正常时会看到：
-
-```
-模块已加载: process=com.vivo.health, framework=LSPosed ..., api=102, remote=true
-Hook 成功: com.vivo.health.devices.watch.musiccontrol.MusicCtrlManager$Companion#b()
-已注入音乐白名单 (...)，共 101 项，其中自定义 1 项: [com.netease.cloudmusic]
-```
 
 ## 问题成因
 
