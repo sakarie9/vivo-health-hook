@@ -17,8 +17,6 @@
 
 选择结果通过 `RemotePreferences` 实时同步，无需「保存」按钮。
 
-``
-
 ## 构建
 
 ```bash
@@ -80,17 +78,17 @@ LSPosed 框架数据库  ──(变更回调)──▶  com.vivo.health 进程
 
 ## 常见问题
 
-**列表里找不到某个音乐 App？**
+- 列表里找不到某个音乐 App？
 
-- 该 App 可能没有桌面图标。用右上角菜单的「手动输入包名」补充，包名可用 `adb shell pm list packages | grep -i music` 查询。
+  该 App 可能没有桌面图标。用右上角菜单的「手动输入包名」补充，包名可用 `adb shell pm list packages | grep -i music` 查询。
 
-**改完列表要重启健康 App 吗？**
+- 改完列表要重启健康 App 吗？
 正常情况下不需要，RemotePreferences 会实时推送。若长时间没反应，把音乐暂停/播放一次触发会话变化，或强制停止健康 App 重新打开。
 
-**换健康 App 版本后失效了？**
+- 换健康 App 版本后失效了？
 Hook 是按「`MusicCtrlManager$Companion` 上无参且返回 `java.util.List` 的方法」定位的，并优先匹配已知混淆名 `b`；若 vivo 改了类名/包名结构，需要按新版本重新定位。当前适配 `7.1.1.02`。
 
-**为什么模块 App 自己不在作用域里？**
+- 为什么模块 App 自己不在作用域里？
 libxposed 现代 API 下模块 App 不会被 Hook，框架通过模块自身的 `XposedService` ContentProvider 把服务 binder 发给模块 App。
 
 ## 兼容
