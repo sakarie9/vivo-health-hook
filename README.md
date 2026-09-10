@@ -91,6 +91,10 @@ Hook 是按「`MusicCtrlManager$Companion` 上无参且返回 `java.util.List` �
 - 为什么模块 App 自己不在作用域里？
 libxposed 现代 API 下模块 App 不会被 Hook，框架通过模块自身的 `XposedService` ContentProvider 把服务 binder 发给模块 App。
 
+## 截图
+
+![Screenshot](assets/screenshot-1.webp)
+
 ## 兼容
 
 仅使用 Vivo Watch GT2 实机测试通过，理论上所有使用 vivo 健康 App 的手表都能使用。
