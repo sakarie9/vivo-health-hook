@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Android 11+ 包可见性：声明后即可查询带启动图标的应用，无需 QUERY_ALL_PACKAGES。 -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+
+    <application
+        android:name=".ModuleApp"
+        android:allowBackup="false"
+        android:description="@string/app_description"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.VivoHealthXposed">
+
+        <!--
+          主界面：同时声明 INFO 与 Xposed 模块设置 category，隐藏桌面图标后仍可进入：
+          - LSPosed 管理器的「打开」优先匹配 de.robv.android.xposed.category.MODULE_SETTINGS；
+          - 找不到时走 getLaunchIntentForPackage，它会先匹配 CATEGORY_INFO、再匹配 LAUNCHER。
+          因此禁用下面的 LauncherAlias 隐藏图标后，LSPosed / 系统「应用信息」都能打开本应用。
+        -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.INFO" />
+                <category android:name="de.robv.android.xposed.category.MODULE_SETTINGS" />
+            </intent-filter>
+        </activity>
+
+        <!-- 桌面图标入口：隐藏图标时禁用该 alias（见 LauncherIconController）。 -->
+        <activity-alias
+            android:name=".LauncherAlias"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+    </application>
+
+</manifest>

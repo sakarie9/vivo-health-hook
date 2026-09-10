@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--
+      Compose 负责实际配色。这里提供无 ActionBar 的浅色窗口主题，并显式声明 edge-to-edge：
+      透明系统栏 + 内容延伸到刘海区域；窗口背景使用与应用一致的浅色，避免底部出现黑条。
+    -->
+    <style name="Theme.VivoHealthXposed" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">#FFFAFDFD</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="27">shortEdges</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
+        <item name="android:enforceStatusBarContrast" tools:targetApi="29">false</item>
+        <item name="android:enforceNavigationBarContrast" tools:targetApi="29">false</item>
+        <item name="android:windowOptOutEdgeToEdgeEnforcement" tools:targetApi="35">false</item>
+    </style>
+</resources>

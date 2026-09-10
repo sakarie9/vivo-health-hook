@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vivo 健康音乐白名单</string>
+    <string name="app_description">向 vivo 健康注入自定义音乐应用白名单，让手表能识别并控制更多音乐 App</string>
+
+    <string name="screen_title">Vivo 健康音乐白名单</string>
+
+    <string name="search_hint">搜索应用名称或包名</string>
+    <string name="search_clear">清除搜索</string>
+
+    <string name="filter_all">全部 %1$d</string>
+    <string name="filter_selected">已选 %1$d</string>
+    <string name="filter_builtin">内置 %1$d</string>
+
+    <string name="refresh">刷新应用列表</string>
+    <string name="more">更多操作</string>
+    <string name="action_add_manual">手动输入包名</string>
+    <string name="action_clear_all">清空已勾选</string>
+
+    <string name="status_connected">已连接 %1$s %2$s · API %3$d</string>
+    <string name="status_connected_detail">已选 %1$d · 内置 %2$d</string>
+    <string name="status_disconnected_title">未连接到 LSPosed 服务</string>
+    <string name="status_disconnected_detail">列表已暂存在本地。请在 LSPosed 中启用本模块并重启本 App。</string>
+
+    <string name="badge_builtin">内置</string>
+    <string name="badge_uninstalled">未安装</string>
+    <string name="builtin_info">%1$s 由 vivo 健康内置，已自动生效，无需勾选</string>
+
+    <string name="empty_no_apps">没有读取到可选择的已安装应用</string>
+    <string name="empty_search">没有匹配「%1$s」的应用</string>
+    <string name="empty_selected">还没有勾选任何应用</string>
+    <string name="empty_selected_hint">在「全部」列表中找到音乐 App 并勾选即可</string>
+    <string name="empty_builtin">没有读取到内置白名单数据</string>
+    <string name="loading_apps">正在读取应用列表…</string>
+
+    <string name="manual_dialog_title">手动输入包名</string>
+    <string name="manual_dialog_hint">com.netease.cloudmusic</string>
+    <string name="input_label">应用包名</string>
+    <string name="manual_dialog_confirm">添加</string>
+    <string name="manual_dialog_cancel">取消</string>
+    <string name="manual_invalid">请输入合法的包名，例如 com.netease.cloudmusic</string>
+    <string name="manual_duplicate">该包名已在列表中</string>
+    <string name="manual_builtin">该应用已被 vivo 健康内置，无需手动添加</string>
+    <string name="manual_added">已添加 %1$s</string>
+
+    <string name="remote_failed">写入框架远程配置失败：%1$s</string>
+
+    <!-- 关于 / 使用说明 -->
+    <string name="about_title">关于</string>
+    <string name="about_back">返回</string>
+    <string name="about_version">版本 %1$s</string>
+    <string name="about_counts">已选 %1$d · 内置 %2$d</string>
+
+    <string name="about_intro_title">这个应用做什么</string>
+    <string name="about_intro_body">vivo 健康只把少数音乐 App 写进内置白名单，导致手表的音乐卡片无法识别其它播放器。\n\n本模块会在健康 App 读取白名单时，动态追加你在本应用中勾选（或手动输入）的包名，从而让手表识别并控制任意音乐 App。</string>
+
+    <string name="about_how_title">工作原理</string>
+    <string name="about_how_body">Hook vivo 健康内部的 MusicCtrlManager.getAppList()，让它返回「原始白名单 + 你勾选的包名」。\n\n勾选结果通过 LSPosed 的 RemotePreferences 实时同步到健康 App 进程，无需重启，下一次播放状态变化就会生效。原始白名单不会被修改，列表清空时行为与未安装模块一致。</string>
+
+    <string name="about_usage_title">使用方法</string>
+    <string name="about_usage_step1">1. 在 LSPosed 中启用本模块（作用域已固定为 vivo 健康，无需手动勾选）。</string>
+    <string name="about_usage_step2">2. 强制停止并重新打开一次 vivo 健康，让模块完成注入。</string>
+    <string name="about_usage_step3">3. 回到本应用，在「全部」里勾选要支持的音乐 App；标「内置」的已被健康 App 支持，无需勾选。</string>
+    <string name="about_usage_step4">4. 手机播放音乐，手表的音乐卡片即可显示并控制。</string>
+
+    <string name="about_list_title">列表说明</string>
+    <string name="about_list_body">全部：手机已安装的应用，带「内置」徽标的表示健康 App 原本就支持。\n已选：你手动勾选的自定义应用。\n内置：vivo 健康内置的完整白名单，只读且自动生效；标「未安装」表示该包名不在本机。\n\n顶部搜索框可同时按应用名和包名过滤。</string>
+
+    <string name="about_icon_title">桌面图标</string>
+    <string name="about_icon_switch">隐藏桌面图标</string>
+    <string name="about_icon_body">隐藏后桌面不再显示本应用图标，功能不受影响。\n需要再次打开时：在 LSPosed 管理器中点击本模块的「打开」即可（模块入口使用 CATEGORY_INFO，隐藏图标后仍然有效）；也可用命令：\nadb shell am start -n com.sakari.vivohealthxposed/.MainActivity</string>
+
+    <string name="about_hide_dialog_title">隐藏桌面图标？</string>
+    <string name="about_hide_dialog_body">隐藏后桌面将不再显示本应用图标。\n\n再次打开：在 LSPosed 管理器中点击本模块的「打开」即可；模块主界面使用 android.intent.category.INFO 声明，隐藏桌面图标后依然能被 LSPosed / 系统「应用信息」找到。</string>
+    <string name="about_hide_dialog_confirm">隐藏</string>
+    <string name="about_hide_dialog_cancel">取消</string>
+    <string name="about_icon_hidden_toast">已隐藏桌面图标，可从 LSPosed 管理器打开本应用</string>
+
+    <string name="about_faq_title">常见问题</string>
+    <string name="about_faq_body">找不到某个音乐 App？它可能没有桌面图标，用右上角菜单的「手动输入包名」补充。\n\n勾选后不生效？把音乐暂停再播放一次触发会话变化，或强制停止后重新打开 vivo 健康。\n\n换健康 App 版本失效？Hook 依赖 MusicCtrlManager 的结构，需要按新版本重新适配。</string>
+
+    <string name="about_footer">com.sakari.vivohealthxposed</string>
+</resources>
